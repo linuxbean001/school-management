@@ -4,7 +4,7 @@ import UpFirst from './UpFirst';
 import Budgets from './Budgets';
 import Resources from './Resources';
 
-class Dashboard extends Component {
+class Dashboard extends Component { 
 
     constructor(props) {
         super(props);
@@ -13,9 +13,16 @@ class Dashboard extends Component {
     render() {
         return (
             <div >
-                <UpFirst />
+                 <section id="dash-main">
+        <div className="container-fluid">
+            <div className="row">
+            <UpFirst />
                 <Budgets />
                 <Resources />
+            </div>
+        </div>
+    </section>  
+               
             </div>
         );
     }

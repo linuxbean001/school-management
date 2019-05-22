@@ -5,7 +5,6 @@ import Dashboard from './components/dashboard/Dashboard';
 import Resources from './components/resources/Resources';
 import './App.css';
 
-
 class App extends Component {
 
   constructor(props) {
@@ -19,7 +18,7 @@ class App extends Component {
           <div>
             <Header />
             <Switch>
-              <Route exact path='/' component={Dashboard} />
+              <Route exact path='/' component={Dashboard} /> 
               <Route path='/dashboard' component={Dashboard} />
               <Route path='/resources' component={Resources} />
             </Switch>

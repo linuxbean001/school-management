@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class UpFirst extends Component {
 
     constructor(props) {
@@ -10,7 +9,14 @@ class UpFirst extends Component {
     render() {
         return (
             <div >
-                <p>This Is UpFirst</p>
+                <div className="col-md-4 col-sm-4">
+                    <div className="dash-main-box">
+                        <h3>Up First</h3>
+                        <div className="dash-inner-box">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
