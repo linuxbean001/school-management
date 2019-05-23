@@ -267,3 +267,6 @@ ul.top-bar-acc {
 .top-bar > ul, .top-bar-links > ul > li:last-child{
     border-right: none;
 }
+canvas.chartjs-render-monitor {
+    margin-top: -25px;
+}
