@@ -8,7 +8,7 @@ class Budgets extends Component {
 
     render() {
         return (
-            <div >
+            < >
                   <div className="col-md-5 col-sm-5">
                     <div className="dash-main-box">
                         <h3>Budgets <a href="#"><i className="fa fa-pencil"></i></a></h3>
@@ -17,7 +17,7 @@ class Budgets extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

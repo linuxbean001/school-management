@@ -8,7 +8,7 @@ class UpFirst extends Component {
 
     render() {
         return (
-            <div >
+            <>
                 <div className="col-md-4 col-sm-4">
                     <div className="dash-main-box">
                         <h3>Up First</h3>
@@ -17,7 +17,7 @@ class UpFirst extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

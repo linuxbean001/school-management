@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, Chart } from 'react-chartjs-2';
 class Resources extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            chartData: props.chartData
+            chartData: props.chartData,
+            chart: ''
         }
     }
     componentWillMount() {
         this.getChartData();
     }
     getChartData() {
+        const originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
+        Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
+            draw: function () {
+                originalDoughnutDraw.apply(this, arguments);
+
+                const chart = this.chart.chart;
+                const ctx = chart.ctx;
+                const width = chart.width;
+                const height = chart.height;
+
+                const fontSize = (height / 350).toFixed(2);
+                ctx.font = fontSize + "em Verdana";
+                ctx.textBaseline = "middle";
+
+                const text = chart.config.data.text,
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2;
+
+                ctx.fillText(text, textX, textY);
+            }
+        });
         this.setState({
             chartData: {
-                labels: [],
+                labels: ['Title1', 'Title2', 'Title3'],
                 datasets: [
                     {
                         label: 'Population',
-                       
+
                         data: [
                             10,
                             30,
@@ -28,13 +50,19 @@ class Resources extends Component {
                             '#f5c205',
                             '#4dc175',
                             '#2f36f0',
-                           
-                        ]
+
+                        ],
+                        // hoverBackgroundColor: [
+                        //     '#FF6384',
+                        //     '#36A2EB',
+                        //     '#FFCE56'
+                        // ]
                     }
-                ]
+                ],
+                text: '$135.2K'
             },
             chartData2: {
-                labels: [],
+                labels: ['Title1', 'Title2', 'Title3'],
                 datasets: [
                     {
                         label: 'Population',
@@ -47,13 +75,14 @@ class Resources extends Component {
                             '#f5c205',
                             '#4dc175',
                             '#2f36f0',
-                           
+
                         ]
                     }
-                ]
+                ],
+                text: '$13.2K'
             },
             chartData3: {
-                labels: [],
+                labels: ['Title1', 'Title2', 'Title3'],
                 datasets: [
                     {
                         label: 'Population',
@@ -66,17 +95,18 @@ class Resources extends Component {
                             '#f5c205',
                             '#4dc175',
                             '#2f36f0',
-                           
+
                         ]
                     }
-                ]
+                ],
+                text: '$15.2K'
             }
         });
     }
     render() {
 
         return (
-            <div >
+            <>
                 <div className="chart">
 
                 </div>
@@ -92,11 +122,17 @@ class Resources extends Component {
                                         <Doughnut
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
-                                            
                                         />
                                     </div>
 
@@ -106,9 +142,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -118,9 +161,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -130,9 +180,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -142,9 +199,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -154,9 +218,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -172,9 +243,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData2}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -184,9 +262,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData2}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -196,9 +281,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData2}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -208,9 +300,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData2}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -220,9 +319,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData2}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -232,9 +338,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData2}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -250,9 +363,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData3}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -262,9 +382,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData3}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -274,9 +401,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData3}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -286,9 +420,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData3}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -298,9 +439,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData3}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -310,9 +458,16 @@ class Resources extends Component {
                                             ref={(reference) => this.chartReference = reference}
                                             data={this.state.chartData3}
 
-                                            options={{ maintainAspectRatio: false, responsive: true,tooltips: {
-                                                mode: false
-                                            } }}
+                                            width={250}
+                                            height={250}
+                                            options={{
+                                                legend: {
+                                                    display: false
+                                                },
+                                                maintainAspectRatio: false,
+                                                responsive: true,
+                                                cutoutPercentage: 60,
+                                            }}
                                         />
                                     </div>
 
@@ -321,7 +476,7 @@ class Resources extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }
