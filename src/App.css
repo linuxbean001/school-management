@@ -286,4 +286,27 @@ canvas.chartjs-render-monitor {
     font-size: 12px;
 }
 .circle-graph-box-inner {
-    padding: 20px;}
+    padding: 20px;
+}
+    .budgets_cl h5{
+        margin-bottom: 15px;
+    }
+    .budgets_cl p {
+        color: #42505c;
+        font-weight: 400;
+        font-size: 13px;
+    }
+    .budgets_cl p span {
+        
+        font-weight: 600;
+        
+    }
+    .blue_bar{
+        background-color: #2f36f0;
+    }
+    .yellow_bar{
+        background-color: #f5c205
+    }
+    .green_bar{
+        background-color: #4dc174
+    }
